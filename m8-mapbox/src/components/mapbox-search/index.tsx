@@ -12,7 +12,12 @@ const boxStyles = {
   fontSize: 20,
 };
 
-function MapboxSeach() {
+type MapBoxSearchProps = {
+  onChange?: (any) => any;
+};
+
+function MapboxSeach(props: MapBoxSearchProps) {
+  const { onChange } = props;
   const [query, setQuery] = useState("");
   // lo seteo any porque la prop "center" de Map se queja
   const initialCoords: any = [-0.481747846041145, 51.3233379650232];
@@ -28,13 +33,21 @@ function MapboxSeach() {
     const lon = parseFloat(data[0].lon);
     const newCoords = [lon, lat];
     setCoords(newCoords);
+
+    // lo "tiro" hacia arriba para que reciban las coordenadas desde "afuera"
+    if (onChange) {
+      onChange({
+        query: query,
+        coords: newCoords,
+      });
+    }
   }
 
-  function onChange(e) {
+  function inputChangeHandler(e) {
     setQuery(e.target.value);
   }
 
-  function onKeyDown(e) {
+  function keydownInputHandler(e) {
     // si no es con form, tengo que agregar esto
     if (e.key == "Enter") {
       search();
@@ -46,8 +59,8 @@ function MapboxSeach() {
       <div>
         <input
           type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
+          onChange={inputChangeHandler}
+          onKeyDown={keydownInputHandler}
           value={query}
           style={boxStyles}
         />
