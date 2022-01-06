@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import { MapboxSeach } from "./components/mapbox-search";
+import { Form } from "./components/form";
 
-ReactDOM.render(<MapboxSeach />, document.getElementById("app"));
+ReactDOM.render(<Form />, document.getElementById("app"));

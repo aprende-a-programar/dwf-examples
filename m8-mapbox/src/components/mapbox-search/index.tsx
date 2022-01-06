@@ -71,8 +71,8 @@ function MapboxSeach(props: MapBoxSearchProps) {
       <Map
         style="mapbox://styles/mapbox/streets-v9"
         containerStyle={{
-          height: "500px",
-          width: "500px",
+          height: "300px",
+          width: "300px",
         }}
         zoom={[15]}
         center={coords}
