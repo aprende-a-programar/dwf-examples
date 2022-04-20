@@ -50,6 +50,8 @@ function MapboxSeach(props: MapBoxSearchProps) {
   function keydownInputHandler(e) {
     // si no es con form, tengo que agregar esto
     if (e.key == "Enter") {
+      // evito que se dispare el submit
+      e.preventDefault();
       search();
     }
   }
@@ -64,7 +66,7 @@ function MapboxSeach(props: MapBoxSearchProps) {
           value={query}
           style={boxStyles}
         />
-        <button style={boxStyles} onClick={search}>
+        <button style={boxStyles} onClick={search} type="button">
           Buscar
         </button>
       </div>

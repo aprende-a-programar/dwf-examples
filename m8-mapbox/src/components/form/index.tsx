@@ -3,6 +3,8 @@ import { MapboxSeach } from "../mapbox-search";
 export function Form() {
   const [formData, setFormData] = useState({});
   function submitHandler(e) {
+    console.log("El evento submit se disparó");
+
     e.preventDefault();
     const allData = {
       formData,
